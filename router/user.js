@@ -125,13 +125,16 @@ if (!token) {
 
 // 회원정보수정 구현 
 router.post('/update', function (req, res) {
+  console.log('debug');
   const update = req.body;
   console.log(update.name, update.password);
   var name = req.body.name;
   var password = req.body.password;
   var email = req.body.email;
-
-  connection.query(`UPDATE user SET name=?, password=? WHERE email=? VALUES ('${update.name}', '${update.password}','${email}')`)
+  // 1. SET 뒤에도 변수 삽입 하게 바꿈 (동작하는지 확인)
+  var query = `UPDATE user SET name='${update.name}', password='${update.password}' WHERE email='${update.email}' VALUES ('${update.name}', '${update.password}','${email}')`;
+  console.log(query);
+  connection.query(query);
 });
 
 
