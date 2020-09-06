@@ -64,7 +64,6 @@ router.post('/login', function (req, res) {
           },
             jwt_secret, {
             expiresIn: '1h',
-            subject: 'userInfo'
           }, (err, token) => {
             if (err) reject(err)
             resolve(token)
@@ -122,7 +121,7 @@ if (!token) {
     }
   )
 });
-
+ 
 // 회원정보수정 구현 
 router.post('/update', function (req, res) {
   console.log('debug');
@@ -132,10 +131,18 @@ router.post('/update', function (req, res) {
   var password = req.body.password;
   var email = req.body.email;
   // 1. SET 뒤에도 변수 삽입 하게 바꿈 (동작하는지 확인)
-  var query = `UPDATE user SET name='${update.name}', password='${update.password}' WHERE email='${update.email}' VALUES ('${update.name}', '${update.password}','${email}')`;
+  var query = `UPDATE user SET name='${update.name}', password='${update.password}' WHERE email='${update.email}'`;
   console.log(query);
   connection.query(query);
+
+  res.status(200).json({
+    'status': 200,
+    'msg': '정보가 변경되었습니다.'
+  });
+
 });
 
 
 module.exports = router;
+
+//VALUES ('${update.name}', '${update.password}','${email}')
