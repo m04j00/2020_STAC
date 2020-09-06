@@ -94,6 +94,35 @@ router.post('/login', function (req, res) {
   }
 });
 
+//인증 확인
+router.get('/check', function(req,res) {
+  const token = req.headers['x-access-token'] || req.query.token;
+  let jwt_secret = 'stac';
+if (!token) {
+    res.status(400).json({
+      'status': 400,
+      'msg': '권한이 없습니다.'
+    });
+  }
+  const checkToken = new Promise((resolve, reject) => {
+    jwt.verify(token, jwt_secret, function (err, decoded) {
+      if (err) reject(err);
+      resolve(decoded);
+    });
+  });
+
+  checkToken.then(
+    token => {
+      console.log(token);
+      res.status(200).json({
+        'status': 200,
+        'msg': 'API 수행이 가능합니다.',
+        token
+      });
+    }
+  )
+});
+
 // 회원정보수정 구현 
 router.post('/update', function (req, res) {
   const update = req.body;
