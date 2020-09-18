@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+process.send = process.send || function () {};
 
 const indexRouter = require('./router/index');
 const usersRouter = require('./router/user');
