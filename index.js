@@ -9,6 +9,13 @@ app.use('/', indexRouter);
 app.use('/user', usersRouter);
 app.use('/recode', recodeRouter);
 
-  app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+app.listen(port, function () {
+  process.send(‘ready’)
+  console.log(`application is listening on port ${port}...`)
+})
+process.on(‘SIGINT’, function () {
+  app.close(function () {
+  console.log(‘server closed’)
+  process.exit(0)
   })
+})
