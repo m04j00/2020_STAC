@@ -1,5 +1,5 @@
 module.exports = {
-    index: [{
+    apps: [{
     name: 'index',
     script: './index.js',
     instances: 0,
