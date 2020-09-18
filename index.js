@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+process.send = process.send || function () {};
 
 let isDisableKeepAlive = false;
 app.use(function(request, response, next) {
@@ -23,10 +24,9 @@ app.listen(port, function() {
   console.log(`application is listening on port ${port}...`)
 });
 
-process.on('SIGINT', function () {
+process.on('SIGINT', async () => {
   isDisableKeepAlive = true;
-  app.close(function () {
-  console.log('server closed')
+  await app.close();
+  console.log('server closed');
   process.exit(0);
   });
-});
