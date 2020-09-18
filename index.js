@@ -5,6 +5,14 @@ const indexRouter = require('./router/index');
 const usersRouter = require('./router/user');
 const recodeRouter = require('./router/recode');
 
+let isDisableKeepAlive = false
+app.use(function(req, res, next) {
+  if (isDisableKeepAlive) {
+    res.set(‘Connection’, ‘close’)
+  }
+  next()
+})
+
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
 app.use('/recode', recodeRouter);
