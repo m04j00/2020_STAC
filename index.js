@@ -1,14 +1,14 @@
 'use strict';
 
-const express = require('express');
+import express from 'express';
 const app = express();
 const PORT = 3000;
 const HOST = '0.0.0.0';
 process.send = process.send || function () {};
 
-const indexRouter = require('./router/index');
-const usersRouter = require('./router/user');
-const recodeRouter = require('./router/recode');
+import indexRouter from './router/index';
+import usersRouter from './router/user';
+import recodeRouter from './router/recode';
 
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
