@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["pm2-docker", "ecosystem.config.js"]
+CMD ["pm2-runtime", "ecosystem.config.js"]
