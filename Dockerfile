@@ -1,4 +1,4 @@
-From node: 12
+From node: 14.11.0
 MAINTALNER Lee Minji <m04j00@gmail.com>
 WORKDIR /home/ec2-user/nodejs
 
