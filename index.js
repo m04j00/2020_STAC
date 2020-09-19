@@ -22,7 +22,7 @@ app.use('/', indexRouter);
 app.use('/user', usersRouter);
 app.use('/recode', recodeRouter);
 
-app.listen(port, function() {
+app.listen(PORT, function() {
   process.send('ready');
   console.log(`Running on http://${HOST}:${PORT}`);
 });
