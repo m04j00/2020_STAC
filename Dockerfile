@@ -1,5 +1,5 @@
-FROM node: 14.11.0
-WORKDIR /home/ec2-user/nodejs
+FROM node: 12
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 
