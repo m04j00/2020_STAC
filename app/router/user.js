@@ -94,10 +94,10 @@ router.post('/login', function (req, res) {
 });
 
 //인증 확인
-router.get('/check', function(req,res) {
+router.get('/check', function (req, res) {
   const token = req.headers['x-access-token'] || req.query.token;
   let jwt_secret = 'stac';
-if (!token) {
+  if (!token) {
     res.status(400).json({
       'status': 400,
       'msg': '권한이 없습니다.'
@@ -121,7 +121,7 @@ if (!token) {
     }
   )
 });
- 
+
 // 회원정보수정 구현 
 router.post('/update', function (req, res) {
   console.log('debug');

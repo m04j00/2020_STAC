@@ -53,7 +53,7 @@ router.post('/upload', function (req, res) {
         return res.status(200).send(file_num);
     })
 })
- 
+
 // 4. 녹음 파일 내려받기
 router.post('/download', (req, res) => {
     const token = req.headers['x-access-token'] || req.query.token;
@@ -67,7 +67,7 @@ router.post('/download', (req, res) => {
         const file_num = req.body.file_num
 
         const file_path = setting.file_path_prefix + email + file_num;
-        
+
         return res.sendFile(file_path, options, function (err) {
             if (err) {
                 next(err)

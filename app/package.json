@@ -1,12 +1,15 @@
 {
-  "name": "docker_web_app",
+  "name": "hurry-up",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start ecosystem.config.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Minji Lee <m04j00@gmail.com>",
+  "contributors": [
+    "Jaeseok Lee <jaeseoklee00@gmail.com>"
+  ],
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
@@ -19,6 +22,6 @@
     "nodemon": "^2.0.4",
     "sync": "^0.2.5"
   },
-  "description": "Node.js on Docker",
+  "description": "Hurry Up node.js backend with STAC2020",
   "devDependencies": {}
 }
